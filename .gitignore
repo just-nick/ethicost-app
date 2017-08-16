@@ -1,3 +1,6 @@
 # InteliJ
 .idea/
 *.iml
+
+# Ignore
+node_modules/

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>React App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @keyframes scale-pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.8);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        body {
+            margin: 0;
+            background: hotpink;
+        }
+        .app-loading {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #FFFFFF;
+        }
+        .app-loading .logo {
+            animation: scale-pulse 1s infinite;
+            font-size: 200px;
+        }
+        .app-loading .label {
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+    <div class="app-loading">
+        <div class="logo">
+            &#9829;
+        </div>
+        <div class="label">
+            Ethicost
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
