@@ -11,7 +11,7 @@ export namespace ScoreActions {
                 GET_SCORE_SUCCESS,
                 GET_SCORE_FAILURE
             ],
-            'http://www.mocky.io/v2/5993c3ec1200008b09313d99'//'/api/score'
+            '//www.mocky.io/v2/5993c3ec1200008b09313d99'//'/api/score'
         );
     }
 }
