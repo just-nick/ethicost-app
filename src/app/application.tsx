@@ -8,7 +8,6 @@ import ScoreCardComponent from './score/score-card.component';
 class Application extends React.Component<ProviderProps & DispatchProp<any>, {}> {
     constructor(props: ProviderProps & DispatchProp<any>) {
         super(props);
-        //this.props.dispatch(SaintActions.find());
     }
 
     public render() {

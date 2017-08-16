@@ -2,6 +2,8 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
+const AUTH_CLIENT_ID = process.env.AUTH_CLIENT_ID || 'aqMchxLQ3sldvvKEZxMBmd95lBhnhm4z';
+
 module.exports = {
     entry: [
         './src/index.tsx'
@@ -57,6 +59,11 @@ module.exports = {
             template: './src/index.html',
             files: {
                 js: [ "bundle.js"]
+            }
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                AUTH_CLIENT_ID: JSON.stringify(AUTH_CLIENT_ID)
             }
         })
     ]
