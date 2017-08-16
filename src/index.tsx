@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import createStore from './app/create-store';
 import Application from './app/application';
 
-import './style/index.scss';
+import './index.scss';
 
 let store = createStore();
 

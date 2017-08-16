@@ -25,7 +25,7 @@ module.exports = {
             {
                 test: /\.scss$/,
                 exclude: /(node_modules|public\/)/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
+                use: ['style-loader', 'css-loader', 'sass-loader', 'import-glob-loader']
             },
             {
                 test: /\.(svg|jpg|png)?$/,

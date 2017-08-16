@@ -3,9 +3,7 @@ import {connect, DispatchProp, Provider, ProviderProps} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
 import AuthorizeComponent from './auth/authorize.component';
 import LandingComponent from './landing/landing.component';
-// import BuyerComponent from './app/buyer/buyer.component';
-// import {SaintActions} from './app/saint/saint.actions';
-// import SaintChooserComponent from './app/saint/saint-chooser/saint-chooser.component';
+import ScoreCardComponent from './score/score-card.component';
 
 class Application extends React.Component<ProviderProps & DispatchProp<any>, {}> {
     private AUTH_CLIENT_ID: string = 'aqMchxLQ3sldvvKEZxMBmd95lBhnhm4z';
@@ -28,7 +26,8 @@ class Application extends React.Component<ProviderProps & DispatchProp<any>, {}>
                     <Provider store={this.props.store}>
                         <BrowserRouter>
                             <switch>
-                                <Route exact path="/" component={LandingComponent as any}/>
+                                <Route exact path="/" component={LandingComponent as any} />
+                                <Route exact path="/score" component={ScoreCardComponent as any} />
                                 <Route exact path="/authorizing" component={AuthorizeComponent as any}/>
                             </switch>
                         </BrowserRouter>
