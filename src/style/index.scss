@@ -1,0 +1,41 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+button, input, p, select {
+    font-size: 1rem;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.ethicost {
+    animation: fade-in 1s;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #fff;
+
+    header,
+    footer {
+        display: block;
+        background: hotpink;
+        color: #fff;
+        height: 3rem;
+        line-height: 3rem;
+    }
+
+    .body {
+        flex: 1;
+        padding: 0 0.8rem 0.8rem;
+    }
+}

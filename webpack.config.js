@@ -36,9 +36,6 @@ module.exports = {
     },
     devServer: {
         port: 4200,
-        // enable HMR
-        //hot: true,
-        // embed the webpack-dev-server runtime into the bundle
         inline: true,
         historyApiFallback: true,
         proxy: {
@@ -53,9 +50,9 @@ module.exports = {
         }
     },
     plugins: [
-        // new CopyWebpackPlugin([
-        //     {from: 'src/assets', to: 'assets'}
-        // ]),
+        new CopyWebpackPlugin([
+            {from: 'src/assets', to: 'assets'}
+        ]),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             files: {
@@ -63,4 +60,4 @@ module.exports = {
             }
         })
     ]
-}
+};

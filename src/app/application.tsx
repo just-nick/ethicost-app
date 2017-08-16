@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect, DispatchProp, Provider, ProviderProps} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
-// import AddSaintComponent from './app/saint/add-saint/add-saint.component';
+import LandingComponent from './landing/landing.component';
 // import BuyerComponent from './app/buyer/buyer.component';
 // import {SaintActions} from './app/saint/saint.actions';
 // import SaintChooserComponent from './app/saint/saint-chooser/saint-chooser.component';
@@ -18,14 +18,11 @@ class Application extends React.Component<ProviderProps & DispatchProp<any>, {}>
                 <header>EthiCost</header>
                 <div className="body">
                     <Provider store={this.props.store}>
-                        <h1>Hello world</h1>
-                        {/*<BrowserRouter>*/}
-                            {/*<switch>*/}
-                                {/*<Route exact path="/" component={SaintChooserComponent as any}/>*/}
-                                {/*<Route path="/add" component={AddSaintComponent as any}/>*/}
-                                {/*<Route path="/buy" component={BuyerComponent as any}/>*/}
-                            {/*</switch>*/}
-                        {/*</BrowserRouter>*/}
+                        <BrowserRouter>
+                            <switch>
+                                <Route exact path="/" component={LandingComponent as any}/>
+                            </switch>
+                        </BrowserRouter>
                     </Provider>
                 </div>
                 <footer></footer>
