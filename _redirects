@@ -1,2 +1,3 @@
+http://ethicost.netlify.com/* https://ethicost.netlify.com/:splat 301!
 /api/*  https://ethicost.herokuapp.com/:splat  200
 /*  /index.html 200
