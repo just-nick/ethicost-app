@@ -23,9 +23,10 @@ class AuthorizeComponent extends React.Component<any, any> {
         this.oauthService.getToken(this.authCode).then((oAuthTokenResponse: string) => {
             localStorage.setItem('idToken', oAuthTokenResponse);
             this.props.dispatch(SessionActions.get());
-            this.props.history.push('/home');
+            this.props.history.push('/');
         }).catch((error: Error) => {
             console.error('error', error.message);
+            this.props.history.push('/');
         });
     }
 

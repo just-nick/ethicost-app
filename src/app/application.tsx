@@ -3,15 +3,13 @@ import {connect, DispatchProp, Provider, ProviderProps} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
 import AuthorizeComponent from './auth/authorize.component';
 import LandingComponent from './landing/landing.component';
-import PortalComponent from './portal/portal.component';
-import ScoreCardComponent from './score/score-card.component';
 import {SessionActions} from './session/session.actions';
 
-class Application extends React.Component<any, any> {
+export class Application extends React.Component<any, any> {
     private static AUTH_CLIENT_ID: string = process.env.MACQUARIE_CLIENT_ID;
     private static AUTH_STATE: string = 'NSW';
     private static AUTH_PATH = 'https://sandbox.api.macquariebank.io/connect/v1/user-interface/login';
-    private static AUTH_URL: string = `${Application.AUTH_PATH}?client_id=${Application.AUTH_CLIENT_ID}&state=${Application.AUTH_STATE}`;
+    public static AUTH_URL: string = `${Application.AUTH_PATH}?client_id=${Application.AUTH_CLIENT_ID}&state=${Application.AUTH_STATE}`;
 
     constructor(props: ProviderProps & DispatchProp<any>) {
         super(props);
@@ -33,8 +31,6 @@ class Application extends React.Component<any, any> {
                         <BrowserRouter>
                             <switch>
                                 <Route exact path="/" component={LandingComponent as any}/>
-                                <Route exact path="/home" component={PortalComponent as any}/>
-                                <Route exact path="/score" component={ScoreCardComponent as any}/>
                                 <Route exact path="/authorizing" component={AuthorizeComponent as any}/>
                             </switch>
                         </BrowserRouter>
