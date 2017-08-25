@@ -19,7 +19,7 @@ export default class AuthorizeComponent extends React.Component<any, any> {
 
         this.oauthService = new OauthService();
 
-        this.oauthService.getToken().then((oAuthTokenResponse: OauthTokenResponse) => {
+        this.oauthService.getToken(this.authCode).then((oAuthTokenResponse: OauthTokenResponse) => {
             localStorage.setItem('token', oAuthTokenResponse.token);
         }).catch((error: Error) => {
             console.error('error', error.message);
