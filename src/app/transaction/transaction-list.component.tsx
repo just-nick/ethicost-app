@@ -1,10 +1,12 @@
 import * as React from "react";
 import {connect} from 'react-redux';
 import LoaderComponent from '../loader/loader.component';
+import { MerchantActions } from "./transaction.actions";
 
 class TransactionListComponent extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
+        this.props.dispatch(MerchantActions.get());
     }
 
     public render() {
@@ -16,7 +18,10 @@ class TransactionListComponent extends React.Component<any, any> {
             return (
                 <ul className="merchants">
                     <li>
-                        <button>Merchant name</button>
+                        <button>
+                            Merchant name
+                            <span>62</span>
+                        </button>
 
                         <table className="transaction-list">
                             <thead>
@@ -24,7 +29,6 @@ class TransactionListComponent extends React.Component<any, any> {
                                     <th>Description</th>
                                     <th>Category</th>
                                     <th>Amount</th>
-                                    <th>Score</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,7 +36,6 @@ class TransactionListComponent extends React.Component<any, any> {
                                     <td className="description">Ipsum</td>
                                     <td className="category">Dolar</td>
                                     <td className="amount">$10.00</td>
-                                    <td className="ethiscore">62</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -43,4 +46,6 @@ class TransactionListComponent extends React.Component<any, any> {
     }
 }
 
-export default connect((state) => ({}))(TransactionListComponent);
+export default connect((state) => ({
+    merchant: state.merchantStore
+}))(TransactionListComponent);
