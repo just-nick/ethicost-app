@@ -17,6 +17,7 @@
     },
     "homepage": "https://github.com/just-nick/ethicost-app#readme",
     "dependencies": {
+        "@types/fb": "0.0.22",
         "copy-webpack-plugin": "^4.0.1",
         "copyfiles": "^1.2.0",
         "css-loader": "^0.28.4",
