@@ -60,7 +60,8 @@ module.exports = {
         }),
         new webpack.DefinePlugin({
             'process.env': {
-                AUTH_CLIENT_ID: JSON.stringify(AUTH_CLIENT_ID)
+                AUTH_CLIENT_ID: JSON.stringify(AUTH_CLIENT_ID),
+                FB_APP_ID: JSON.stringify('323609098091154')
             }
         })
     ]
