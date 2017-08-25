@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const MACQUARIE_CLIENT_ID = process.env.MACQUARIE_CLIENT_ID || 'aqMchxLQ3sldvvKEZxMBmd95lBhnhm4z';
+const MACQUARIE_CLIENT_ID = process.env.MACQUARIE_CLIENT_ID;
 
 module.exports = {
     entry: [
