@@ -17,10 +17,12 @@
                 transform: scale(1);
             }
         }
+
         body {
             margin: 0;
             background: hotpink;
         }
+
         .app-loading {
             height: 100vh;
             display: flex;
@@ -29,10 +31,12 @@
             align-items: center;
             color: #FFFFFF;
         }
+
         .app-loading .logo {
             animation: scale-pulse 1s infinite;
             font-size: 200px;
         }
+
         .app-loading .label {
             padding-top: 20px;
         }
@@ -50,6 +54,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    (function () {
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = '//platform-api.sharethis.com/js/sharethis.js#property=599fb57289ce4100138ae2fc&product=inline-share-buttons';
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+    })();
+</script>
+
 </body>
 
 </html>

@@ -28,8 +28,8 @@ class ScoreCardComponent extends React.Component<any, any> {
                 <div className="score-card">
                     <h1>My Ethiscore</h1>
                     <div className="score">{score.value}</div>
-
-                    <button onClick={() => this.share()}>Share</button>
+                    <br />
+                    <div className="sharethis-inline-share-buttons"></div>
                 </div>
             );
         }
