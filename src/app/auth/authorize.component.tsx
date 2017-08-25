@@ -1,8 +1,9 @@
 import * as React from 'react';
+import {connect} from 'react-redux';
 import {SessionActions} from '../session/session.actions';
 import OauthService from './oauth.service';
 
-export default class AuthorizeComponent extends React.Component<any, any> {
+class AuthorizeComponent extends React.Component<any, any> {
     private oauthService: OauthService;
     private queryParams: URLSearchParams;
     private authCode: string;
@@ -22,6 +23,7 @@ export default class AuthorizeComponent extends React.Component<any, any> {
         this.oauthService.getToken(this.authCode).then((oAuthTokenResponse: string) => {
             localStorage.setItem('idToken', oAuthTokenResponse);
             this.props.dispatch(SessionActions.get());
+            this.props.history.push('/home');
         }).catch((error: Error) => {
             console.error('error', error.message);
         });
@@ -37,3 +39,7 @@ export default class AuthorizeComponent extends React.Component<any, any> {
         );
     }
 }
+
+export default connect((state) => ({
+    session: state.sessionReducer,
+}))(AuthorizeComponent);

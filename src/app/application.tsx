@@ -3,6 +3,7 @@ import {connect, DispatchProp, Provider, ProviderProps} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
 import AuthorizeComponent from './auth/authorize.component';
 import LandingComponent from './landing/landing.component';
+import PortalComponent from './portal/portal.component';
 import ScoreCardComponent from './score/score-card.component';
 import {SessionActions} from './session/session.actions';
 
@@ -36,6 +37,7 @@ class Application extends React.Component<any, any> {
                         <BrowserRouter>
                             <switch>
                                 <Route exact path="/" component={LandingComponent as any}/>
+                                <Route exact path="/home" component={PortalComponent as any}/>
                                 <Route exact path="/score" component={ScoreCardComponent as any}/>
                                 <Route exact path="/authorizing" component={AuthorizeComponent as any}/>
                             </switch>
@@ -70,7 +72,6 @@ class Application extends React.Component<any, any> {
     public logout() {
         localStorage.removeItem('idToken');
         this.props.dispatch(SessionActions.get());
-
     }
 }
 
