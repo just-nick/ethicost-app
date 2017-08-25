@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const AUTH_CLIENT_ID = process.env.AUTH_CLIENT_ID || 'aqMchxLQ3sldvvKEZxMBmd95lBhnhm4z';
+const MACQUARIE_CLIENT_ID = process.env.MACQUARIE_CLIENT_ID || 'aqMchxLQ3sldvvKEZxMBmd95lBhnhm4z';
 
 module.exports = {
     entry: [
@@ -60,7 +60,7 @@ module.exports = {
         }),
         new webpack.DefinePlugin({
             'process.env': {
-                AUTH_CLIENT_ID: JSON.stringify(AUTH_CLIENT_ID),
+                MACQUARIE_CLIENT_ID: JSON.stringify(MACQUARIE_CLIENT_ID),
                 FB_APP_ID: JSON.stringify('323609098091154')
             }
         })

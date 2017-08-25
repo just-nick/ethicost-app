@@ -1,6 +1,6 @@
 import * as React from 'react';
+import {SessionActions} from '../session/session.actions';
 import OauthService from './oauth.service';
-import OauthTokenResponse from './oauthtokenresponse';
 
 export default class AuthorizeComponent extends React.Component<any, any> {
     private oauthService: OauthService;
@@ -20,7 +20,8 @@ export default class AuthorizeComponent extends React.Component<any, any> {
         this.oauthService = new OauthService();
 
         this.oauthService.getToken(this.authCode).then((oAuthTokenResponse: string) => {
-            localStorage.setItem('token', oAuthTokenResponse);
+            localStorage.setItem('idToken', oAuthTokenResponse);
+            this.props.dispatch(SessionActions.get());
         }).catch((error: Error) => {
             console.error('error', error.message);
         });

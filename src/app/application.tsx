@@ -6,12 +6,12 @@ import LandingComponent from './landing/landing.component';
 import ScoreCardComponent from './score/score-card.component';
 import {SessionActions} from './session/session.actions';
 
-const AUTH_CLIENT_ID: string = process.env.MACQUARIE_CLIENT_ID;
-const AUTH_STATE: string = 'NSW';
-const AUTH_PATH = 'https://sandbox.api.macquariebank.io/connect/v1/user-interface/login';
-const AUTH_URL: string = `${AUTH_PATH}?client_id=${AUTH_CLIENT_ID}&state=${AUTH_STATE}`;
-
 class Application extends React.Component<any, any> {
+    private static AUTH_CLIENT_ID: string = process.env.MACQUARIE_CLIENT_ID;
+    private static AUTH_STATE: string = 'NSW';
+    private static AUTH_PATH = 'https://sandbox.api.macquariebank.io/connect/v1/user-interface/login';
+    private static AUTH_URL: string = `${Application.AUTH_PATH}?client_id=${Application.AUTH_CLIENT_ID}&state=${Application.AUTH_STATE}`;
+
     constructor(props: ProviderProps & DispatchProp<any>) {
         super(props);
         this.props.dispatch(SessionActions.get());
@@ -64,7 +64,7 @@ class Application extends React.Component<any, any> {
     }
 
     public goToLogin() {
-        window.location.href = AUTH_URL;
+        window.location.href = Application.AUTH_URL;
     }
 
     public logout() {
