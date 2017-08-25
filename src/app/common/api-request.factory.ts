@@ -1,4 +1,4 @@
-import {CALL_API} from 'redux-api-middleware';
+import {CALL_API} from "redux-api-middleware";
 
 export namespace ApiRequestFactory {
     export function get(types: Array<string | Object | Symbol>, endpoint: string) {
@@ -6,6 +6,10 @@ export namespace ApiRequestFactory {
             [CALL_API]: {
                 types,
                 endpoint,
+                headers: {
+                    'authorization': 'Bearer ' + localStorage.getItem('idToken'),
+                    'client_id': process.env.MACQUARIE_CLIENT_ID
+                },
                 method: 'GET'
             }
         }
@@ -19,7 +23,11 @@ export namespace ApiRequestFactory {
                 types,
                 endpoint,
                 method: 'PUT',
-                headers: {'Content-Type': bodyContent.contentType},
+                headers: {
+                    'Content-Type': bodyContent.contentType,
+                    'authorization': 'Bearer ' + localStorage.getItem('idToken'),
+                    'client_id': process.env.MACQUARIE_CLIENT_ID
+                },
                 body: bodyContent.body
             }
         };
@@ -33,13 +41,17 @@ export namespace ApiRequestFactory {
                 types,
                 endpoint,
                 method: 'POST',
-                headers: {'Content-Type': bodyContent.contentType},
+                headers: {
+                    'Content-Type': bodyContent.contentType,
+                    'authorization': 'Bearer ' + localStorage.getItem('idToken'),
+                    'client_id': process.env.MACQUARIE_CLIENT_ID
+                },
                 body: bodyContent.body
             }
         }
     }
 
-    function bodyTest(rawBody: any){
+    function bodyTest(rawBody: any) {
         let contentType = 'application/json';
         let body;
 
