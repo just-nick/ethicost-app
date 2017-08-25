@@ -1,10 +1,15 @@
-import * as React from "react";
-import {connect, DispatchProp, Provider, ProviderProps} from "react-redux";
-import {BrowserRouter, Route} from "react-router-dom";
-import AuthorizeComponent from "./auth/authorize.component";
-import LandingComponent from "./landing/landing.component";
-import ScoreCardComponent from "./score/score-card.component";
-import {SessionActions} from "./session/session.actions";
+import * as React from 'react';
+import {connect, DispatchProp, Provider, ProviderProps} from 'react-redux';
+import {BrowserRouter, Route} from 'react-router-dom';
+import AuthorizeComponent from './auth/authorize.component';
+import LandingComponent from './landing/landing.component';
+import ScoreCardComponent from './score/score-card.component';
+import {SessionActions} from './session/session.actions';
+
+const AUTH_CLIENT_ID: string = process.env.MACQUARIE_CLIENT_ID;
+const AUTH_STATE: string = 'NSW';
+const AUTH_PATH = 'https://sandbox.api.macquariebank.io/connect/v1/user-interface/login';
+const AUTH_URL: string = `${AUTH_PATH}?client_id=${AUTH_CLIENT_ID}&state=${AUTH_STATE}`;
 
 class Application extends React.Component<any, any> {
     constructor(props: ProviderProps & DispatchProp<any>) {
@@ -13,9 +18,6 @@ class Application extends React.Component<any, any> {
     }
 
     public render() {
-
-        console.log(this.props.session);
-
         return (
             <div className="ethicost">
                 <header>
@@ -48,20 +50,30 @@ class Application extends React.Component<any, any> {
     public getLoginButton() {
         if (this.props.session.authenticated) {
             return (
-                <button>
+                <button onClick={this.logout.bind(this)}>
                     Logout
                 </button>
             );
         }
 
         return (
-            <button>
+            <button onClick={this.goToLogin}>
                 Login
             </button>
         );
     }
+
+    public goToLogin() {
+        window.location.href = AUTH_URL;
+    }
+
+    public logout() {
+        localStorage.removeItem('idToken');
+        this.props.dispatch(SessionActions.get());
+
+    }
 }
 
 export default connect<{}, {}, ProviderProps>((state) => ({
-    session: state.sessionReducer
+    session: state.sessionReducer,
 }))(Application);
