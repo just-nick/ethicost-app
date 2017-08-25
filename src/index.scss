@@ -45,8 +45,14 @@ button, input, p, select {
     }
 
     header {
-        a {
+        .brand {
+            padding: 10px;
             color: #fff;
+        }
+
+        .login {
+            float: right;
+            padding-right: 10px;
         }
     }
 

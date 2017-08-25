@@ -4,21 +4,30 @@ import {BrowserRouter, Route} from "react-router-dom";
 import AuthorizeComponent from "./auth/authorize.component";
 import LandingComponent from "./landing/landing.component";
 import ScoreCardComponent from "./score/score-card.component";
+import {SessionActions} from "./session/session.actions";
 
-class Application extends React.Component<ProviderProps & DispatchProp<any>, {}> {
+class Application extends React.Component<any, any> {
     constructor(props: ProviderProps & DispatchProp<any>) {
         super(props);
+        this.props.dispatch(SessionActions.get());
     }
 
     public render() {
+
+        console.log(this.props.session);
+
         return (
             <div className="ethicost">
                 <header>
-                    <a href="/">
+                    <a href="/" className="brand">
                         <h1>
                             EthiCost
                         </h1>
                     </a>
+
+                    <span className="login">
+                        {this.getLoginButton()}
+                    </span>
                 </header>
                 <div className="body">
                     <Provider store={this.props.store}>
@@ -35,6 +44,24 @@ class Application extends React.Component<ProviderProps & DispatchProp<any>, {}>
             </div>
         );
     }
+
+    public getLoginButton() {
+        if (this.props.session.authenticated) {
+            return (
+                <button>
+                    Logout
+                </button>
+            );
+        }
+
+        return (
+            <button>
+                Login
+            </button>
+        );
+    }
 }
 
-export default connect<{}, {}, ProviderProps>(() => ({}))(Application);
+export default connect<{}, {}, ProviderProps>((state) => ({
+    session: state.sessionReducer
+}))(Application);
