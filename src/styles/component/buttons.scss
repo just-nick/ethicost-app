@@ -1,0 +1,19 @@
+%button {
+    display: block;
+    border: 0;
+    padding: 0.2rem 1rem;
+    font-weight: bold;
+    background: color('primary');
+    color: color('primary', 'inverse');
+    border-radius: 0.5rem;
+}
+
+%button-inverse {
+    background: color('primary', 'inverse');
+    color: color('primary');
+}
+
+button,
+.button {
+    @extend %button;
+}

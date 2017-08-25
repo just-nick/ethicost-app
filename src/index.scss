@@ -1,14 +1,30 @@
+$colors: (
+    'primary': (
+        'color': #FF69B4,
+        'dark': #CA0065,
+        'inverse': #fff
+    ),
+    'neutral': (
+        'color': #444,
+        'light': #AAA,
+        'inverse': #fff
+    )
+);
+@function color($name, $variant: 'color') {
+    @return map-get(map-get($colors, $name), $variant)
+}
 $big-font: 6rem;
+$primary-grad: radial-gradient(circle 70vw at center , color('primary') 0%, color('primary', 'dark') 100%);
 
-@import './styles/component/score';
-
-@import './app/**/*.scss';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import './styles/component/**/*';
 
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 100%;
     padding: 0;
     margin: 0;
+    color: color('neutral');
 }
 
 button, input, p, select {
@@ -34,25 +50,29 @@ button, input, p, select {
     header,
     footer {
         display: block;
-        background: hotpink;
+        background: color('primary');
+        background-image: $primary-grad;
         color: #fff;
         height: 3rem;
         line-height: 3rem;
-
-        h1 {
-            display: inline;
-        }
     }
 
     header {
         .brand {
             padding: 10px;
             color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
         .login {
             float: right;
             padding-right: 10px;
+            button {
+                @extend %button-inverse;
+                display: inline-block;
+            }
         }
     }
 
@@ -61,3 +81,5 @@ button, input, p, select {
         padding: 0 0.8rem 0.8rem;
     }
 }
+
+@import './app/**/*.scss';

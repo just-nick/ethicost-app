@@ -22,11 +22,7 @@ class Application extends React.Component<any, any> {
         return (
             <div className="ethicost">
                 <header>
-                    <a href="/" className="brand">
-                        <h1>
-                            EthiCost
-                        </h1>
-                    </a>
+                    <a href="/" className="brand">Ethicost</a>
 
                     <span className="login">
                         {this.getLoginButton()}
