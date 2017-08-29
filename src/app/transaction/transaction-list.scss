@@ -1,5 +1,24 @@
-.transaction-list {
+.merchants {
+    padding: 0;
+    margin: 0;
     display: block;
+
+    li {
+        display: block;
+        margin: 2rem 0;
+    }
+
+    button {
+        width: 100%;
+    }
+    table {
+        display: block;
+        width: 100%;
+
+        &.hidden {
+            display: none;
+        }
+    }
 
     thead {
         display: none;
@@ -46,8 +65,10 @@
 }
 
 @media (min-width: 500px) {
-    .transaction-list {
-        display: table;
+    .merchants {
+        table {
+            display: table;
+        }
 
         thead, tbody {
             display: table-row-group;
