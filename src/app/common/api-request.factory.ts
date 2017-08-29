@@ -7,7 +7,7 @@ export namespace ApiRequestFactory {
                 types,
                 endpoint,
                 headers: {
-                    'authorization': 'Bearer ' + localStorage.getItem('idToken'),
+                    'Authorization': 'Bearer ' + localStorage.getItem('idToken'),
                     'client_id': process.env.MACQUARIE_CLIENT_ID
                 },
                 method: 'GET'
@@ -25,7 +25,7 @@ export namespace ApiRequestFactory {
                 method: 'PUT',
                 headers: {
                     'Content-Type': bodyContent.contentType,
-                    'authorization': 'Bearer ' + localStorage.getItem('idToken'),
+                    'Authorization': 'Bearer ' + localStorage.getItem('idToken'),
                     'client_id': process.env.MACQUARIE_CLIENT_ID
                 },
                 body: bodyContent.body
@@ -43,7 +43,7 @@ export namespace ApiRequestFactory {
                 method: 'POST',
                 headers: {
                     'Content-Type': bodyContent.contentType,
-                    'authorization': 'Bearer ' + localStorage.getItem('idToken'),
+                    'Authorization': 'Bearer ' + localStorage.getItem('idToken'),
                     'client_id': process.env.MACQUARIE_CLIENT_ID
                 },
                 body: bodyContent.body

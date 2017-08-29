@@ -9,37 +9,52 @@ class TransactionListComponent extends React.Component<any, any> {
         this.props.dispatch(MerchantActions.get());
     }
 
+    public merchant(merchant: any) {
+        console.log(merchant);
+        if(merchant.merchantName == "") {
+            return "";
+        }
+        return(<li>
+            <button>
+                {merchant.merchantName}
+                <span>{merchant.score}</span>
+            </button>
+
+            <table className="transaction-list">
+                <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {merchant.transactionResponses.map(this.transaction)}
+                </tbody>
+            </table>
+        </li>)
+    }
+
+    public transaction(transaction: any) {
+        return(
+            <tr>
+                <td className="description">{transaction.description}</td>
+                <td className="category">{transaction.category}</td>
+                <td className="amount">${transaction.amount}</td>
+            </tr>
+        );
+    }
+
     public render() {
-        let score = {loading: false};
-        if (score.loading) {
+        let score = this.props.merchant;
+
+        if (!score || score.loading) {
             return (<LoaderComponent/>);
         }
         else {
             return (
                 <ul className="merchants">
-                    <li>
-                        <button>
-                            Merchant name
-                            <span>62</span>
-                        </button>
-
-                        <table className="transaction-list">
-                            <thead>
-                                <tr>
-                                    <th>Description</th>
-                                    <th>Category</th>
-                                    <th>Amount</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td className="description">Ipsum</td>
-                                    <td className="category">Dolar</td>
-                                    <td className="amount">$10.00</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </li>
+                    {score.merchants.map((merchant: any) => this.merchant(merchant))}
                 </ul>
             );
         }
@@ -47,5 +62,5 @@ class TransactionListComponent extends React.Component<any, any> {
 }
 
 export default connect((state) => ({
-    merchant: state.merchantStore
+    merchant: state.merchantReducer
 }))(TransactionListComponent);

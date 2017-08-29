@@ -17,9 +17,9 @@ export function merchantReducer(state: MerchantStore = initialState, action: Api
             };
 
         case MerchantActions.GET_MERCHANTS_SUCCESS:
-            console.log('Request end');
+            console.log('Request end', action.payload);
             return {
-                merchants: action.payload.value,
+                merchants: action.payload,
                 loading: false
             };
 

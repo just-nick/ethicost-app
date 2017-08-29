@@ -11,7 +11,7 @@ export namespace MerchantActions {
                 GET_MERCHANTS_SUCCESS,
                 GET_MERCHANTS_FAILURE
             ],
-            '//www.mocky.io/v2/599fd3882c0000110a51d5a0'
+            '/api/user-transactions'
         );
     }
 }
