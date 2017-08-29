@@ -9,7 +9,12 @@
     }
 
     button {
+        position: relative;
         width: 100%;
+        span {
+            position: absolute;
+            right: 5px;
+        }
     }
     table {
         display: block;
@@ -68,6 +73,12 @@
     .merchants {
         table {
             display: table;
+        }
+
+        button {
+            span::before {
+                content: 'Ethiscore: '
+            }
         }
 
         thead, tbody {
