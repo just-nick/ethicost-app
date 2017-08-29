@@ -44,7 +44,12 @@ class TransactionListComponent extends React.Component<any, any> {
     }
 
     public show(i: number) {
-        this.setState({currentlyOpen: i});
+        if(this.state.currentlyOpen === i){
+            this.setState({currentlyOpen: -1});
+        }
+        else {
+            this.setState({currentlyOpen: i});
+        }
     }
 
     public transaction(transaction: any) {
@@ -65,9 +70,12 @@ class TransactionListComponent extends React.Component<any, any> {
         }
         else {
             return (
-                <ul className="merchants">
-                    {score.merchants.map((merchant: any, i: number) => this.merchant(merchant, i))}
-                </ul>
+                <div>
+                    <h2>My spending</h2>
+                    <ul className="merchants">
+                        {score.merchants.map((merchant: any, i: number) => this.merchant(merchant, i))}
+                    </ul>
+                </div>
             );
         }
     }
