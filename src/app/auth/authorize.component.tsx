@@ -2,6 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {SessionActions} from '../session/session.actions';
 import OauthService from './oauth.service';
+import LoaderComponent from '../loader/loader.component';
 
 class AuthorizeComponent extends React.Component<any, any> {
     private oauthService: OauthService;
@@ -33,9 +34,10 @@ class AuthorizeComponent extends React.Component<any, any> {
     public render() {
         return (
             <div>
-                <p>
+                <h1>
                     Authorizing...
-                </p>
+                </h1>
+                <LoaderComponent/>
             </div>
         );
     }
